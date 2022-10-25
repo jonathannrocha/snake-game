@@ -3,18 +3,23 @@ import {
   draw as snakeDraw,
   update as snakeUpadte,
   snakeBody,
-  hasSelfColision as hasSelfSnakeColision,
+  selfCollision as hasSelfSnakeColision,
 } from "./snake/snake.js"
 
 import { draw as foodDraw, update as foodUpdate } from "../game/food/index.js"
-import { gameBoard, isOutsideBord } from "./board/index.js"
+import { gameboard, isOutsideBoard } from "./board/index.js"
 
 let lasTimeRender = 0
-let gameOver = false
 
 function main(currenTime) {
-  if (gameOver) {
-    alert("perdemos")
+  if (checkGameOver()) {
+    if (confirm("Você Perdeu o Jogo")) {
+      window.location.reload()
+    } else {
+      window.requestAnimationFrame(main)
+    }
+
+    return
   }
   window.requestAnimationFrame(main)
   const secondsSinceLastRender = (currenTime - lasTimeRender) / 1000
@@ -27,13 +32,10 @@ function main(currenTime) {
   draw()
 }
 
-window.requestAnimationFrame(main)
-
 function update() {
-  gameBoard.innerHTML = ""
+  gameboard.innerHTML = ""
   snakeUpadte()
   foodUpdate()
-  checkGameOver()
 }
 
 function draw() {
@@ -42,7 +44,11 @@ function draw() {
 }
 
 function checkGameOver() {
-  if (isOutsideBord(snakeBody[0]) || hasSelfSnakeColision()) {
-    gameOver = true
-  }
+  console.log("isOutsideBoard", isOutsideBoard(snakeBody[0]))
+  console.log("hasSelfSnakeColision", hasSelfSnakeColision(snakeBody[0]))
+  return isOutsideBoard(snakeBody[0]) || hasSelfSnakeColision()
 }
+
+// if (startGame) {
+//   window.requestAnimationFrame(main)
+// }

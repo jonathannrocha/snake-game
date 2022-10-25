@@ -1,5 +1,6 @@
-export const gameBoard = document.querySelector("#game-board")
 const BOARD_SIZE = 21
+
+export const gameboard = document.getElementById("game-board")
 
 export function generateRandomBoardPosition() {
   return {
@@ -8,11 +9,11 @@ export function generateRandomBoardPosition() {
   }
 }
 
-export function isOutsideBord(position) {
+export function isOutsideBoard(position) {
   return (
-    position.x > BOARD_SIZE ||
     position.x < 1 ||
-    position.y > BOARD_SIZE ||
-    position.y < 1
+    position.x > BOARD_SIZE ||
+    position.y < 1 ||
+    position.y > BOARD_SIZE
   )
 }
