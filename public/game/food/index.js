@@ -1,7 +1,7 @@
 import { generateRandomBoardPosition, gameboard } from "../board/index.js"
 import { collision as snakeCollision, expandSnake } from "../snake/snake.js"
 
-const EXPANSION_RATE = 2
+const EXPANSION_RATE = 10
 
 let foodPosition = generateRandomFoodPosition()
 

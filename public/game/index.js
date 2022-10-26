@@ -8,20 +8,19 @@ import {
 
 import { draw as foodDraw, update as foodUpdate } from "../game/food/index.js"
 import { gameboard, isOutsideBoard } from "./board/index.js"
-
+import { gameOverHome } from "../../main.js"
 let lasTimeRender = 0
+let startGame = false
 
 function main(currenTime) {
   if (checkGameOver()) {
-    if (confirm("Você Perdeu o Jogo")) {
-      window.location.reload()
-    } else {
-      window.requestAnimationFrame(main)
-    }
-
+    startGame = false
+    gameOverHome()
     return
   }
+
   window.requestAnimationFrame(main)
+
   const secondsSinceLastRender = (currenTime - lasTimeRender) / 1000
 
   // verifica se o tempo corrente é menor que a velocidade exigida
@@ -44,11 +43,10 @@ function draw() {
 }
 
 function checkGameOver() {
-  console.log("isOutsideBoard", isOutsideBoard(snakeBody[0]))
-  console.log("hasSelfSnakeColision", hasSelfSnakeColision(snakeBody[0]))
   return isOutsideBoard(snakeBody[0]) || hasSelfSnakeColision()
 }
 
-// if (startGame) {
-//   window.requestAnimationFrame(main)
-// }
+export const ReturnstartGame = () => {
+  window.requestAnimationFrame(main)
+  return (startGame = true)
+}

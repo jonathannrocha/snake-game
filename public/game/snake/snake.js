@@ -1,9 +1,8 @@
 import { gameboard } from "../board/index.js"
 import { getInputDirection } from "./input.js"
 
-export const SNAKE_SPEED = 5
-
 export const snakeBody = [{ x: 11, y: 11 }]
+export let SNAKE_SPEED = 5
 
 let newSegments = 0
 
@@ -18,6 +17,8 @@ export function update() {
 
   snakeBody[0].x += inputDirection.x
   snakeBody[0].y += inputDirection.y
+
+  SNAKE_SPEED = snakeSpeed(snakeBody.length)
 }
 
 export function draw() {
@@ -68,4 +69,14 @@ export function selfCollision() {
 
 export function equalPositions(pos1, pos2) {
   return pos1.x === pos2.x && pos1.y === pos2.y
+}
+
+function snakeSpeed(length) {
+  const speedMultiplier = 10
+
+  let snakeSpeed = 5
+
+  snakeSpeed += Math.floor(length / speedMultiplier) / 2
+
+  return snakeSpeed
 }

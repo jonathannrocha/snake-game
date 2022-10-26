@@ -20,10 +20,10 @@ h1 {
   margin-bottom: 0.6em;
 }
 
-.contaier ul {
-  margin-top: 1.2em;
+.contaier {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
 }
 
 ul li {
@@ -32,9 +32,15 @@ ul li {
   cursor: pointer;
   text-align: center;
 }
+.play {
+  margin-top: 1em;
+  cursor: pointer;
+  width: 5em;
+  fill: rgb(214, 72, 26);
+}
 
-ul li:hover {
-  color: rgb(214, 72, 26);
+.play:hover {
+  transform: scale(1.2);
 }
 
 .heart {
@@ -45,4 +51,26 @@ ul li:hover {
 }
 .heart div {
   width: 130px;
+}
+
+.dead {
+  width: 20px;
+}
+
+.dead {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.dead div {
+  fill: rgb(214, 72, 26);
+  margin-bottom: 2em;
+  width: 100px;
+}
+
+.play svg:nth-child(2) {
+  display: none;
+  height: 6em;
+  transform: rotate(324deg);
 }
