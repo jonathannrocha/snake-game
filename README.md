@@ -10,3 +10,17 @@
 - `Html`
 - `CSS`
 - `Javascript`
+
+# ✔️ Como instalar:
+
+- `npm install || npm i `
+
+# ✔️ Inicializar o projeto:
+
+- `npm run dev`
+
+```
+var adicionar2 = function(numero) {
+ return numero + 2;
+}
+```
