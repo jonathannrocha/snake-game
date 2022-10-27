@@ -20,7 +20,3 @@
 - `npm run dev`
 
 ```
-var adicionar2 = function(numero) {
- return numero + 2;
-}
-```
