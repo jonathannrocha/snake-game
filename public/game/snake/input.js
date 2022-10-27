@@ -1,3 +1,5 @@
+import { restartGame } from "./snake"
+
 let lastInputDirection = {}
 
 const InputDirection = { x: 0, y: 0, group: "" }
@@ -5,6 +7,7 @@ const InputDirection = { x: 0, y: 0, group: "" }
 let count = 0
 
 window.addEventListener("keydown", (key) => {
+  restartGame(false)
   const keyAccept = [
     // eixo inventido
     { key: "ArrowUp", x: 0, y: -1, group: "up/down" },

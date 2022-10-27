@@ -1,7 +1,7 @@
 import "./public/style/index.css"
 
 import { ReturnstartGame } from "./public/game/index.js"
-import { snakeBody } from "./public/game/snake/snake"
+import { restartGame, snakeBody } from "./public/game/snake/snake"
 
 let start = false
 
@@ -10,12 +10,10 @@ const home = document.querySelector("#screen-home")
 const game = document.querySelector("#game-board")
 
 play.addEventListener("click", (e) => {
-  console.log("aqui")
-
   home.style.display = "none"
   game.style.display = "grid"
-
   ReturnstartGame()
+  console.log("restate")
 })
 
 export function gameOverHome() {
@@ -35,4 +33,12 @@ export function gameOverHome() {
   const h2 = document.querySelector("h2")
   h2.innerHTML = "Restart?"
   h2.style.fontSize = "2em"
+
+  for (let i in snakeBody) {
+    snakeBody.pop()
+  }
+  snakeBody.pop()
+  snakeBody.push({ x: 11, y: 11 })
+
+  restartGame(true)
 }

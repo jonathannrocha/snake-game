@@ -3,8 +3,12 @@ import { getInputDirection } from "./input.js"
 
 export const snakeBody = [{ x: 11, y: 11 }]
 export let SNAKE_SPEED = 5
-
+let restart = false
 let newSegments = 0
+
+export function restartGame(boolen) {
+  return (restart = boolen)
+}
 
 export function update() {
   addSegments()
@@ -13,6 +17,12 @@ export function update() {
 
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     snakeBody[i + 1] = { ...snakeBody[i] }
+  }
+
+  if (restart) {
+    snakeBody[0].x += 0
+    snakeBody[0].y += 0
+    return
   }
 
   snakeBody[0].x += inputDirection.x

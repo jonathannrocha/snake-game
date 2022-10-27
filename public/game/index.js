@@ -16,6 +16,7 @@ function main(currenTime) {
   if (checkGameOver()) {
     startGame = false
     gameOverHome()
+
     return
   }
 
