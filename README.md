@@ -13,7 +13,7 @@
 
 # ✔️ Como instalar:
 
-- `npm install || npm i `
+- `npm install `
 
 # ✔️ Inicializar o projeto:
 
